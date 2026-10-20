@@ -1,0 +1,7 @@
+# Downloaded Business Central symbols and generated extension packages
+.alpackages/
+.snapshots/
+*.app
+
+# Generated AL development state
+.vscode/rad.json
