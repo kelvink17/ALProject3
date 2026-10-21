@@ -87,6 +87,15 @@ page 50201 "F1 Race Event Card"
                 RunPageLink = "F1 Race No." = field("No.");
                 ToolTip = 'View posted assembly orders and components used for this race.';
             }
+            action(InventoryUsage)
+            {
+                Caption = 'Inventory Usage';
+                ApplicationArea = All;
+                Image = Entries;
+                RunObject = page "F1 Inventory Usage";
+                RunPageLink = "Race No." = field("No.");
+                ToolTip = 'View inventory used for this race.';
+            }
             action(PurchaseOrders)
             {
                 Caption = 'Purchase Orders';

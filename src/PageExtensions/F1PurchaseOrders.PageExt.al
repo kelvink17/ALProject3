@@ -14,6 +14,11 @@ pageextension 50203 "F1 Purchase Orders" extends "Purchase Order List"
                 ApplicationArea = All;
                 ToolTip = 'Specifies the race linked to this purchase order.';
             }
+            field("F1 Purchase Urgency"; Rec."F1 Purchase Urgency")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies how quickly this purchase order needs attention.';
+            }
         }
     }
 }
