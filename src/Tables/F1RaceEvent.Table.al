@@ -8,13 +8,21 @@ table 50200 "F1 Race Event"
     DrillDownPageId = "F1 Race Events";
     fields
     {
-        field(1; "No."; Code[20]) { Caption = 'No.'; NotBlank = true; }
+        field(1; "No."; Code[20])
+        {
+            Caption = 'No.';
+            NotBlank = true;
+        }
         field(2; Name; Text[100]) { Caption = 'Name'; }
         field(3; "Race Date"; Date) { Caption = 'Race Date'; }
         field(4; Location; Text[100]) { Caption = 'Location'; }
         field(5; Circuit; Text[100]) { Caption = 'Circuit'; }
         field(6; Status; Enum "F1 Race Status") { Caption = 'Status'; }
-        field(7; Season; Integer) { Caption = 'Season'; MinValue = 0; }
+        field(7; Season; Integer)
+        {
+            Caption = 'Season';
+            MinValue = 0;
+        }
     }
     keys
     {
@@ -37,6 +45,7 @@ table 50200 "F1 Race Event"
         if not PurchaseHeader.IsEmpty() then
             Error(RelatedRecordsErr, TableCaption(), "No.", PurchaseHeader.TableCaption());
     end;
+
     var
         RelatedRecordsErr: Label '%1 %2 cannot be deleted because related %3 records exist.', Comment = '%1 = table, %2 = number, %3 = related table';
 }

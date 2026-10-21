@@ -1,5 +1,7 @@
 namespace Thunderstrike.F1CTRL;
 
+using Microsoft.Sales.History;
+
 page 50201 "F1 Race Event Card"
 {
     PageType = Card;
@@ -47,6 +49,12 @@ page 50201 "F1 Race Event Card"
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies the season.';
+                }
+                field("Total Sponsored Revenue"; TotalSponsoredRevenue)
+                {
+                    ApplicationArea = All;
+                    ToolTip = 'Specifies the total sponsored revenue generated from posted sales invoices for this race event.';
+                    Editable = false;
                 }
             }
             part(AssignmentLines; "F1 Assignments Part")
@@ -116,4 +124,31 @@ page 50201 "F1 Race Event Card"
             }
         }
     }
+
+    trigger OnAfterGetCurrRecord()
+    begin
+        TotalSponsoredRevenue := CalculateSponsoredRevenue();
+    end;
+
+    local procedure CalculateSponsoredRevenue(): Decimal
+    var
+        SalesInvoiceHeader: Record "Sales Invoice Header";
+        SalesInvoiceLine: Record "Sales Invoice Line";
+        Revenue: Decimal;
+    begin
+        SalesInvoiceHeader.SetRange("F1 Race Event No.", Rec."No.");
+        if SalesInvoiceHeader.FindSet() then
+            repeat
+                SalesInvoiceLine.SetRange("Document No.", SalesInvoiceHeader."No.");
+                if SalesInvoiceLine.FindSet() then
+                    repeat
+                        Revenue += SalesInvoiceLine.Amount;
+                    until SalesInvoiceLine.Next() = 0;
+            until SalesInvoiceHeader.Next() = 0;
+
+        exit(Revenue);
+    end;
+
+    var
+        TotalSponsoredRevenue: Decimal;
 }

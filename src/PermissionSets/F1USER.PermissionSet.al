@@ -1,5 +1,7 @@
 namespace Thunderstrike.F1CTRL;
 
+using Microsoft.Sales.History;
+
 permissionset 50200 "F1 USER"
 {
     Assignable = true;
@@ -10,6 +12,8 @@ permissionset 50200 "F1 USER"
         tabledata "F1 Team Member" = RIMD,
         tabledata "F1 Team Assignment" = RIMD,
         tabledata "F1 Inventory Usage" = Ri,
+        tabledata "Sales Invoice Header" = R,
+        tabledata "Sales Invoice Line" = R,
         table "F1 Race Event" = X,
         table "F1 Team Member" = X,
         table "F1 Team Assignment" = X,
