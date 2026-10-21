@@ -1,0 +1,6 @@
+# requests
+# Requests are separated by ###. Variables: {{baseUrl}}. Environments: http-client.env.json
+
+### GET http://localhost:7049/BC280/api/thunderstrike/f1/v1.0/companies(default)/raceEvents
+GET http://localhost:7049/BC280/api/thunderstrike/f1/v1.0/companies(default)/raceEvents
+Authorization: Basic bcdev:135790Kk@

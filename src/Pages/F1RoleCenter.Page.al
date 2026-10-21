@@ -58,7 +58,20 @@ page 50206 "F1 Role Center"
                     ToolTip = 'Manage purchase orders.';
                 }
             }
+            group(Reports)
+            {
+                Caption = 'Reports';
+                action(RaceSummaryReport)
+                {
+                    Caption = 'F1 Race Summary Report';
+                    ApplicationArea = All;
+                    Image = Report;
+                    RunObject = report "F1 Race Summary Report";
+                    ToolTip = 'View race event details and sponsored revenue.';
+                }
+            }
         }
+
         area(Embedding)
         {
             action(Races)
@@ -97,5 +110,8 @@ page 50206 "F1 Role Center"
                 ToolTip = 'Open purchase orders.';
             }
         }
+
     }
+
+
 }

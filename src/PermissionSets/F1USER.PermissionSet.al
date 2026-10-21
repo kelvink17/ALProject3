@@ -19,6 +19,7 @@ permissionset 50200 "F1 USER"
         table "F1 Team Assignment" = X,
         table "F1 Inventory Usage" = X,
         codeunit "F1 Inventory Usage Mgt." = X,
+        report "F1 Race Summary Report" = X,
         page "F1 Race Events" = X,
         page "F1 Race Event Card" = X,
         page "F1 Team Members" = X,
@@ -27,5 +28,6 @@ permissionset 50200 "F1 USER"
         page "F1 Assignments Part" = X,
         page "F1 Role Center" = X,
         page "F1 Inventory Usage" = X,
-        page "F1 Race Overview" = X;
+        page "F1 Race Overview" = X,
+        page "F1 Race Event API" = X;
 }

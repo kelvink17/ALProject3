@@ -17,6 +17,39 @@
             "enableSqlInformationDebugger": true,
             "tenant": "default",
             "usePublicURLFromServer": true
+        },
+        {
+            "name": "AL: Generated Snapshot request",
+            "request": "snapshotInitialize",
+            "type": "al",
+            "server": "http://localhost",
+            "serverInstance": "BC280",
+            "authentication": "UserPassword",
+            "port": 7049,
+            "sessionId": 799,
+            "breakOnNext": "WebClient",
+            "executionContext": "DebugAndProfile"
+        },
+        {
+            "name": "AL: Generated Attach request",
+            "request": "attach",
+            "type": "al",
+            "server": "http://localhost",
+            "serverInstance": "BC280",
+            "authentication": "UserPassword",
+            "port": 7049,
+            "sessionId": 799,
+            "breakOnNext": "WebClient",
+            "breakOnError": "ExcludeTry"
+        },
+        {
+            "name": "AL: Generated Download Symbols request",
+            "request": "launch",
+            "type": "al",
+            "server": "http://localhost",
+            "serverInstance": "BC280",
+            "authentication": "UserPassword",
+            "port": 7049
         }
     ]
 }
