@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 8px;
+    background: transparent;
+    font-family: "Segoe UI", "Segoe WP", Segoe, Tahoma, Helvetica, Arial, sans-serif;
+}
+
+#controlAddIn,
+#f1-readiness-dashboard {
+    width: 100%;
+    height: 100%;
+}
+
+.readiness-card {
+    position: relative;
+    min-height: 200px;
+    padding: 26px 28px;
+    overflow: hidden;
+    color: #f5f7fa;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 16px;
+    background:
+        radial-gradient(circle at 90% 10%, rgba(45, 212, 191, 0.18), transparent 32%),
+        linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.94));
+    box-shadow: 0 14px 32px rgba(15, 23, 42, 0.18);
+    backdrop-filter: blur(14px);
+}
+
+.readiness-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: #2dd4bf;
+}
+
+.readiness-header,
+.readiness-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.readiness-label {
+    margin: 0 0 8px;
+    color: #5eead4;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+}
+
+.readiness-card h2 {
+    margin: 0;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 600;
+    line-height: 1.15;
+}
+
+.readiness-score {
+    min-width: 105px;
+    text-align: right;
+}
+
+.readiness-score strong {
+    display: block;
+    color: #5eead4;
+    font-size: 34px;
+    line-height: 1;
+}
+
+.readiness-score span {
+    color: #94a3b8;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+}
+
+.readiness-details {
+    margin-top: 34px;
+    color: #cbd5e1;
+    font-size: 13px;
+}
+
+.readiness-details strong {
+    color: #f8fafc;
+    font-weight: 600;
+}
+
+.readiness-track {
+    height: 8px;
+    margin-top: 12px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.18);
+}
+
+.readiness-fill {
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #14b8a6, #5eead4);
+    box-shadow: 0 0 18px rgba(45, 212, 191, 0.45);
+    transition: width 500ms ease;
+}
+
+@media (max-width: 520px) {
+    .readiness-card {
+        padding: 22px;
+    }
+
+    .readiness-header {
+        align-items: flex-start;
+    }
+
+    .readiness-card h2 {
+        font-size: 21px;
+    }
+
+    .readiness-score strong {
+        font-size: 28px;
+    }
+}

@@ -122,6 +122,24 @@ page 50201 "F1 Race Event Card"
                 RunPageLink = "F1 Race No." = field("No.");
                 ToolTip = 'View posted purchase receipts for this race.';
             }
+            action(SalesOrders)
+            {
+                Caption = 'Sales Orders';
+                ApplicationArea = All;
+                Image = Order;
+                RunObject = page Microsoft.Sales.Document."Sales Order List";
+                RunPageLink = "F1 Race Event No." = field("No.");
+                ToolTip = 'View sales and sponsorship orders for this race.';
+            }
+            action(PostedSalesInvoices)
+            {
+                Caption = 'Posted Sales Invoices';
+                ApplicationArea = All;
+                Image = PostedOrder;
+                RunObject = page Microsoft.Sales.History."Posted Sales Invoices";
+                RunPageLink = "F1 Race Event No." = field("No.");
+                ToolTip = 'View posted sponsor invoices and revenue for this race.';
+            }
         }
     }
 

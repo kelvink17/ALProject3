@@ -57,6 +57,13 @@ page 50206 "F1 Role Center"
                     RunObject = page Microsoft.Purchases.Document."Purchase Order List";
                     ToolTip = 'Manage purchase orders.';
                 }
+                action(SalesOrders)
+                {
+                    Caption = 'Sales Orders';
+                    ApplicationArea = All;
+                    RunObject = page Microsoft.Sales.Document."Sales Order List";
+                    ToolTip = 'Manage race-related sales and sponsorship orders.';
+                }
             }
             group(Reports)
             {
@@ -108,6 +115,13 @@ page 50206 "F1 Role Center"
                 ApplicationArea = All;
                 RunObject = page Microsoft.Purchases.Document."Purchase Order List";
                 ToolTip = 'Open purchase orders.';
+            }
+            action(Sales)
+            {
+                Caption = 'Sales Orders';
+                ApplicationArea = All;
+                RunObject = page Microsoft.Sales.Document."Sales Order List";
+                ToolTip = 'Open sales orders.';
             }
         }
 

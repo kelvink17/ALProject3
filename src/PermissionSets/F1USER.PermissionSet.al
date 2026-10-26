@@ -1,5 +1,7 @@
 namespace Thunderstrike.F1CTRL;
 
+using Microsoft.Purchases.History;
+
 using Microsoft.Sales.History;
 
 permissionset 50200 "F1 USER"
@@ -8,12 +10,19 @@ permissionset 50200 "F1 USER"
     Caption = 'F1CTRL User';
     Permissions =
         codeunit "F1 Race Management" = X,
+        codeunit "F1 Race Readiness Mgt." = X,
+        codeunit "F1 Purchase Posting Mgt." = X,
+        codeunit "F1CTRL Vendor Score Management" = X,
+        codeunit "F1CTRL Vendor Risk Warning" = X,
+        codeunit "F1CTRL Sales Posting Mgt" = X,
         tabledata "F1 Race Event" = RIMD,
         tabledata "F1 Team Member" = RIMD,
         tabledata "F1 Team Assignment" = RIMD,
         tabledata "F1 Inventory Usage" = Ri,
         tabledata "Sales Invoice Header" = R,
         tabledata "Sales Invoice Line" = R,
+        tabledata "Purch. Inv. Header" = R,
+        tabledata "Purch. Inv. Line" = R,
         table "F1 Race Event" = X,
         table "F1 Team Member" = X,
         table "F1 Team Assignment" = X,
