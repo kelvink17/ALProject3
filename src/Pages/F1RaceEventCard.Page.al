@@ -154,6 +154,9 @@ page 50201 "F1 Race Event Card"
         SalesInvoiceLine: Record "Sales Invoice Line";
         Revenue: Decimal;
     begin
+        if Rec."No." = '' then
+            exit(0);
+
         SalesInvoiceHeader.SetRange("F1 Race Event No.", Rec."No.");
         if SalesInvoiceHeader.FindSet() then
             repeat

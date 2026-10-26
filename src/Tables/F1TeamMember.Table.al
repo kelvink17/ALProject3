@@ -8,7 +8,7 @@ table 50201 "F1 Team Member"
     DrillDownPageId = "F1 Team Members";
     fields
     {
-        field(1; "No."; Code[20]) { Caption = 'No.'; NotBlank = true; }
+        field(1; "No."; Code[20]) { Caption = 'No.'; }
         field(2; Name; Text[100]) { Caption = 'Name'; }
         field(3; Role; Enum "F1 Team Role") { Caption = 'Role'; }
         field(4; "Email"; Text[80]) { Caption = 'Email'; ExtendedDatatype = EMail; }
@@ -16,6 +16,14 @@ table 50201 "F1 Team Member"
         field(6; Blocked; Boolean) { Caption = 'Blocked'; }
     }
     keys { key(PK; "No.") { Clustered = true; } }
+    trigger OnInsert()
+    var
+        F1NoSeriesMgt: Codeunit "F1 No. Series Mgt.";
+    begin
+        if "No." = '' then
+            "No." := F1NoSeriesMgt.GetNextTeamMemberNo();
+    end;
+
     trigger OnDelete()
     var
         Assignment: Record "F1 Team Assignment";

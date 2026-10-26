@@ -11,7 +11,6 @@ table 50200 "F1 Race Event"
         field(1; "No."; Code[20])
         {
             Caption = 'No.';
-            NotBlank = true;
         }
         field(2; Name; Text[100]) { Caption = 'Name'; }
         field(3; "Race Date"; Date) { Caption = 'Race Date'; }
@@ -29,6 +28,14 @@ table 50200 "F1 Race Event"
         key(PK; "No.") { Clustered = true; }
         key(RaceDate; "Race Date") { }
     }
+    trigger OnInsert()
+    var
+        F1NoSeriesMgt: Codeunit "F1 No. Series Mgt.";
+    begin
+        if "No." = '' then
+            "No." := F1NoSeriesMgt.GetNextRaceNo();
+    end;
+
     trigger OnDelete()
     var
         Assignment: Record "F1 Team Assignment";

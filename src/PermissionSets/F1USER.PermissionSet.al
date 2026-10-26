@@ -15,6 +15,7 @@ permissionset 50200 "F1 USER"
         codeunit "F1CTRL Vendor Score Management" = X,
         codeunit "F1CTRL Vendor Risk Warning" = X,
         codeunit "F1CTRL Sales Posting Mgt" = X,
+        codeunit "F1 No. Series Mgt." = X,
         tabledata "F1 Race Event" = RIMD,
         tabledata "F1 Team Member" = RIMD,
         tabledata "F1 Team Assignment" = RIMD,
