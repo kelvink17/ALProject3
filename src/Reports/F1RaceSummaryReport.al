@@ -9,8 +9,9 @@ report 50200 "F1 Race Summary Report"
     ApplicationArea = All;
     Caption = 'F1 Race Summary Report';
 
-    // Using Word or Excel layout allows easy testing in BC
-    DefaultLayout = Excel;
+    // RDLC supports browser preview; Excel remains available for analysis.
+    DefaultLayout = RDLC;
+    RDLCLayout = 'src/F1RaceSummaryReport.rdlc';
     ExcelLayout = 'src/F1RaceSummaryReport.xlsx';
 
 
@@ -19,7 +20,7 @@ report 50200 "F1 Race Summary Report"
         // Primary Data Item: Loop through Race Events
         dataitem(RaceEvent; "F1 Race Event")
         {
-            RequestFilterFields = "No.", Season, Status;
+            RequestFilterFields = "No.";
 
             // Columns to include in report output
             column(No; "No.") { }

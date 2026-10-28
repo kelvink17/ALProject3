@@ -66,6 +66,17 @@ page 50201 "F1 Race Event Card"
     }
     actions
     {
+        area(Promoted)
+        {
+            actionref(AssignmentsPromoted; Assignments) { }
+            actionref(AssemblyOrdersPromoted; AssemblyOrders) { }
+            actionref(PostedAssemblyOrdersPromoted; PostedAssemblyOrders) { }
+            actionref(InventoryUsagePromoted; InventoryUsage) { }
+            actionref(PurchaseOrdersPromoted; PurchaseOrders) { }
+            actionref(PostedPurchaseReceiptsPromoted; PostedPurchaseReceipts) { }
+            actionref(SalesOrdersPromoted; SalesOrders) { }
+            actionref(PostedSalesInvoicesPromoted; PostedSalesInvoices) { }
+        }
         area(Navigation)
         {
             action(Assignments)
@@ -146,6 +157,11 @@ page 50201 "F1 Race Event Card"
     trigger OnAfterGetCurrRecord()
     begin
         TotalSponsoredRevenue := CalculateSponsoredRevenue();
+    end;
+
+    trigger OnDeleteRecord(): Boolean
+    begin
+        exit(Rec.ConfirmDeletion());
     end;
 
     local procedure CalculateSponsoredRevenue(): Decimal

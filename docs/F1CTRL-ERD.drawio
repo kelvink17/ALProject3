@@ -1,0 +1,75 @@
+<mxfile host="app.diagrams.net" modified="2026-10-28T12:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="f1ctrl-erd" name="F1CTRL ERD">
+    <mxGraphModel dx="1800" dy="1100" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="F1CTRL — Entity Relationship Diagram" style="text;html=1;align=left;verticalAlign=middle;fontSize=26;fontStyle=1;fontColor=#111827;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="600" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend" value="Blue = custom F1CTRL table  •  Grey = standard Business Central table extended by F1CTRL  •  PK = primary key  •  FK = foreign key" style="text;html=1;align=left;verticalAlign=middle;fontSize=12;fontColor=#4B5563;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="950" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="race" value="&lt;b&gt;F1 RACE EVENT&lt;/b&gt;&lt;hr&gt;&lt;b&gt;PK&lt;/b&gt; No. : Code[20]&lt;br&gt;Name : Text[100]&lt;br&gt;Race Date : Date&lt;br&gt;Location : Text[100]&lt;br&gt;Circuit : Text[100]&lt;br&gt;Status : F1 Race Status&lt;br&gt;Season : Integer" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#DBEAFE;strokeColor=#2563EB;strokeWidth=2;fontColor=#111827;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="730" y="330" width="270" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="member" value="&lt;b&gt;F1 TEAM MEMBER&lt;/b&gt;&lt;hr&gt;&lt;b&gt;PK&lt;/b&gt; No. : Code[20]&lt;br&gt;Name : Text[100]&lt;br&gt;Role : F1 Team Role&lt;br&gt;Email : Text[80]&lt;br&gt;Phone No. : Text[30]&lt;br&gt;Blocked : Boolean" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#DBEAFE;strokeColor=#2563EB;strokeWidth=2;fontColor=#111827;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="310" width="260" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="assignment" value="&lt;b&gt;F1 TEAM ASSIGNMENT&lt;/b&gt;&lt;hr&gt;&lt;b&gt;PK, FK&lt;/b&gt; Race No.&lt;br&gt;&lt;b&gt;PK, FK&lt;/b&gt; Team Member No.&lt;br&gt;Role : F1 Team Role&lt;br&gt;Notes : Text[250]&lt;br&gt;Member Name : FlowField&lt;br&gt;Race Name : FlowField" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#DBEAFE;strokeColor=#2563EB;strokeWidth=2;fontColor=#111827;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="380" y="320" width="270" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="usage" value="&lt;b&gt;F1 INVENTORY USAGE&lt;/b&gt;&lt;hr&gt;&lt;b&gt;PK&lt;/b&gt; Entry No. : Integer&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; Race No.&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; Item No.&lt;br&gt;Quantity Used : Decimal&lt;br&gt;Posting Date : Date&lt;br&gt;Posted Assembly No.&lt;br&gt;Unit of Measure Code&lt;br&gt;Reverses Entry No." style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#DBEAFE;strokeColor=#2563EB;strokeWidth=2;fontColor=#111827;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="310" width="280" height="260" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="assembly" value="&lt;b&gt;ASSEMBLY HEADER&lt;/b&gt;&lt;hr&gt;&lt;b&gt;PK&lt;/b&gt; Document Type + No.&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; F1 Race No.&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; Item No.&lt;br&gt;Quantity / Location Code" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#F3F4F6;strokeColor=#6B7280;fontColor=#111827;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1080" y="100" width="260" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="postedAssembly" value="&lt;b&gt;POSTED ASSEMBLY HEADER&lt;/b&gt;&lt;hr&gt;&lt;b&gt;PK&lt;/b&gt; No.&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; F1 Race No.&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; Item No.&lt;br&gt;Quantity / Posting Date" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#F3F4F6;strokeColor=#6B7280;fontColor=#111827;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="100" width="260" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="item" value="&lt;b&gt;ITEM&lt;/b&gt;&lt;hr&gt;&lt;b&gt;PK&lt;/b&gt; No.&lt;br&gt;Description&lt;br&gt;Inventory&lt;br&gt;Base Unit of Measure" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#F3F4F6;strokeColor=#6B7280;fontColor=#111827;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1450" y="350" width="220" height="150" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="purchase" value="&lt;b&gt;PURCHASE HEADER&lt;/b&gt;&lt;hr&gt;&lt;b&gt;PK&lt;/b&gt; Document Type + No.&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; F1 Race No.&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; Buy-from Vendor No.&lt;br&gt;F1 Purchase Urgency&lt;br&gt;F1 Vendor Score : FlowField" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#F3F4F6;strokeColor=#6B7280;fontColor=#111827;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="310" y="650" width="280" height="190" as="geometry"/>
+        </mxCell>
+        <mxCell id="receipt" value="&lt;b&gt;PURCH. RCPT. HEADER&lt;/b&gt;&lt;hr&gt;&lt;b&gt;PK&lt;/b&gt; No.&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; F1 Race No.&lt;br&gt;Buy-from Vendor No.&lt;br&gt;Posting Date" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#F3F4F6;strokeColor=#6B7280;fontColor=#111827;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="650" y="680" width="240" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="purchaseInvoice" value="&lt;b&gt;PURCH. INV. HEADER&lt;/b&gt;&lt;hr&gt;&lt;b&gt;PK&lt;/b&gt; No.&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; F1 Race No.&lt;br&gt;Buy-from Vendor No.&lt;br&gt;Amount / Posting Date" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#F3F4F6;strokeColor=#6B7280;fontColor=#111827;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="950" y="680" width="240" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="vendor" value="&lt;b&gt;VENDOR&lt;/b&gt;&lt;hr&gt;&lt;b&gt;PK&lt;/b&gt; No.&lt;br&gt;Name&lt;br&gt;F1 Vendor Score" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#F3F4F6;strokeColor=#6B7280;fontColor=#111827;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="40" y="680" width="200" height="140" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="sales" value="&lt;b&gt;SALES HEADER&lt;/b&gt;&lt;hr&gt;&lt;b&gt;PK&lt;/b&gt; Document Type + No.&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; F1 Race Event No.&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; Sell-to Customer No.&lt;br&gt;Amount" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#F3F4F6;strokeColor=#6B7280;fontColor=#111827;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="680" width="260" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="salesInvoice" value="&lt;b&gt;SALES INVOICE HEADER&lt;/b&gt;&lt;hr&gt;&lt;b&gt;PK&lt;/b&gt; No.&lt;br&gt;&lt;b&gt;FK&lt;/b&gt; F1 Race Event No.&lt;br&gt;Sell-to Customer No.&lt;br&gt;Amount / Posting Date" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacing=10;fillColor=#F3F4F6;strokeColor=#6B7280;fontColor=#111827;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="1550" y="680" width="260" height="170" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="e1" value="1           many" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERmany;startArrow=ERone;startFill=0;endFill=0;strokeColor=#2563EB;fontSize=11;" edge="1" parent="1" source="race" target="assignment"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" value="1           many" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERmany;startArrow=ERone;startFill=0;endFill=0;strokeColor=#2563EB;fontSize=11;" edge="1" parent="1" source="member" target="assignment"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" value="1           many" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERmany;startArrow=ERone;startFill=0;endFill=0;strokeColor=#2563EB;fontSize=11;" edge="1" parent="1" source="race" target="usage"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" value="1           many" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERmany;startArrow=ERone;startFill=0;endFill=0;strokeColor=#6B7280;fontSize=11;" edge="1" parent="1" source="item" target="usage"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" value="race orders" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERmany;startArrow=ERone;startFill=0;endFill=0;strokeColor=#6B7280;fontSize=11;" edge="1" parent="1" source="race" target="assembly"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" value="posted history" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERmany;startArrow=ERone;startFill=0;endFill=0;strokeColor=#6B7280;fontSize=11;" edge="1" parent="1" source="race" target="postedAssembly"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" value="produces" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERmany;startArrow=ERone;startFill=0;endFill=0;strokeColor=#6B7280;fontSize=11;" edge="1" parent="1" source="item" target="assembly"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" value="posted assembly" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERmany;startArrow=ERone;startFill=0;endFill=0;strokeColor=#6B7280;fontSize=11;dashed=1;" edge="1" parent="1" source="postedAssembly" target="usage"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" value="purchase orders" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERmany;startArrow=ERone;startFill=0;endFill=0;strokeColor=#6B7280;fontSize=11;" edge="1" parent="1" source="race" target="purchase"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" value="receipts" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERmany;startArrow=ERone;startFill=0;endFill=0;strokeColor=#6B7280;fontSize=11;" edge="1" parent="1" source="race" target="receipt"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e11" value="purchase spending" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERmany;startArrow=ERone;startFill=0;endFill=0;strokeColor=#6B7280;fontSize=11;" edge="1" parent="1" source="race" target="purchaseInvoice"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e12" value="supplies" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERmany;startArrow=ERone;startFill=0;endFill=0;strokeColor=#6B7280;fontSize=11;" edge="1" parent="1" source="vendor" target="purchase"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e13" value="sales orders" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERmany;startArrow=ERone;startFill=0;endFill=0;strokeColor=#6B7280;fontSize=11;" edge="1" parent="1" source="race" target="sales"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e14" value="sponsored revenue" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERmany;startArrow=ERone;startFill=0;endFill=0;strokeColor=#6B7280;fontSize=11;" edge="1" parent="1" source="race" target="salesInvoice"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -11,6 +11,16 @@ tableextension 50207 "F1CTRL Sales Header Ext" extends "Sales Header"
             Caption = 'F1 Race Event No.';
             TableRelation = "F1 Race Event"."No.";
             DataClassification = CustomerContent;
+
+
+
+
+            trigger OnValidate()
+            var
+                RaceManagement: Codeunit "F1 Race Management";
+            begin
+                RaceManagement.CheckRaceIsUpcoming("F1 Race Event No.");
+            end;
         }
     }
 }

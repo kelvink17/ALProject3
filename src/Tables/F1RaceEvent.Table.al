@@ -39,20 +39,73 @@ table 50200 "F1 Race Event"
     trigger OnDelete()
     var
         Assignment: Record "F1 Team Assignment";
-        AssemblyHeader: Record Microsoft.Assembly.Document."Assembly Header";
-        PurchaseHeader: Record Microsoft.Purchases.Document."Purchase Header";
     begin
+        CheckDeletionAllowed();
+
         Assignment.SetRange("Race No.", "No.");
-        if not Assignment.IsEmpty() then
-            Error(RelatedRecordsErr, TableCaption(), "No.", Assignment.TableCaption());
+        Assignment.DeleteAll(true);
+    end;
+
+    procedure CheckDeletionAllowed()
+    var
+        AssemblyHeader: Record Microsoft.Assembly.Document."Assembly Header";
+        PostedAssemblyHeader: Record Microsoft.Assembly.History."Posted Assembly Header";
+        InventoryUsage: Record "F1 Inventory Usage";
+        PurchaseHeader: Record Microsoft.Purchases.Document."Purchase Header";
+        PurchRcptHeader: Record Microsoft.Purchases.History."Purch. Rcpt. Header";
+        PurchInvHeader: Record Microsoft.Purchases.History."Purch. Inv. Header";
+        SalesHeader: Record Microsoft.Sales.Document."Sales Header";
+        SalesInvHeader: Record Microsoft.Sales.History."Sales Invoice Header";
+    begin
+        if Status <> Status::Cancelled then
+            Error(RaceMustBeCancelledErr, "No.", Format(Status));
+
         AssemblyHeader.SetRange("F1 Race No.", "No.");
         if not AssemblyHeader.IsEmpty() then
             Error(RelatedRecordsErr, TableCaption(), "No.", AssemblyHeader.TableCaption());
+
+        PostedAssemblyHeader.SetRange("F1 Race No.", "No.");
+        if not PostedAssemblyHeader.IsEmpty() then
+            Error(RelatedRecordsErr, TableCaption(), "No.", PostedAssemblyHeader.TableCaption());
+
+        InventoryUsage.SetRange("Race No.", "No.");
+        if not InventoryUsage.IsEmpty() then
+            Error(RelatedRecordsErr, TableCaption(), "No.", InventoryUsage.TableCaption());
+
         PurchaseHeader.SetRange("F1 Race No.", "No.");
         if not PurchaseHeader.IsEmpty() then
             Error(RelatedRecordsErr, TableCaption(), "No.", PurchaseHeader.TableCaption());
+
+        PurchRcptHeader.SetRange("F1 Race No.", "No.");
+        if not PurchRcptHeader.IsEmpty() then
+            Error(RelatedRecordsErr, TableCaption(), "No.", PurchRcptHeader.TableCaption());
+
+        PurchInvHeader.SetRange("F1 Race No.", "No.");
+        if not PurchInvHeader.IsEmpty() then
+            Error(RelatedRecordsErr, TableCaption(), "No.", PurchInvHeader.TableCaption());
+
+        SalesHeader.SetRange("F1 Race Event No.", "No.");
+        if not SalesHeader.IsEmpty() then
+            Error(RelatedRecordsErr, TableCaption(), "No.", SalesHeader.TableCaption());
+
+        SalesInvHeader.SetRange("F1 Race Event No.", "No.");
+        if not SalesInvHeader.IsEmpty() then
+            Error(RelatedRecordsErr, TableCaption(), "No.", SalesInvHeader.TableCaption());
+
+    end;
+
+    procedure ConfirmDeletion(): Boolean
+    var
+        Assignment: Record "F1 Team Assignment";
+    begin
+        CheckDeletionAllowed();
+
+        Assignment.SetRange("Race No.", "No.");
+        exit(Confirm(CancelledRaceDeleteQst, false, "No.", Assignment.Count()));
     end;
 
     var
         RelatedRecordsErr: Label '%1 %2 cannot be deleted because related %3 records exist.', Comment = '%1 = table, %2 = number, %3 = related table';
+        RaceMustBeCancelledErr: Label 'Race event %1 cannot be deleted because its status is %2. Change the status to Cancelled before deleting it.', Comment = '%1 = race number, %2 = race status';
+        CancelledRaceDeleteQst: Label 'Race event %1 is cancelled. Deleting it will also delete %2 team assignment(s). Do you want to continue?', Comment = '%1 = race number, %2 = team assignment count';
 }

@@ -20,6 +20,11 @@ page 50207 "F1 Race Overview"
                 begin
                     SendReadinessToDashboard();
                 end;
+
+                trigger RefreshRequested()
+                begin
+                    SendReadinessToDashboard();
+                end;
             }
             repeater(Races)
             {
@@ -37,15 +42,18 @@ page 50207 "F1 Race Overview"
         RaceReadinessMgt: Codeunit "F1 Race Readiness Mgt.";
         CoveredRoles: Integer;
         TeamCoverage: Integer;
+        DaysRemaining: Integer;
     begin
         RaceEvent.SetCurrentKey("Race Date");
         RaceEvent.SetRange(Status, RaceEvent.Status::Upcoming);
         RaceEvent.SetFilter("Race Date", '>=%1', WorkDate());
 
         if not RaceEvent.FindFirst() then begin
-            CurrPage.ReadinessDashboard.ShowTeamReadiness('No upcoming race', 0, 0);
+            CurrPage.ReadinessDashboard.ShowTeamReadiness('No upcoming race', '', -1, 0, 0);
             exit;
         end;
+
+        DaysRemaining := RaceEvent."Race Date" - WorkDate();
 
         RaceReadinessMgt.CalculateTeamCoverage(
             RaceEvent."No.",
@@ -54,6 +62,8 @@ page 50207 "F1 Race Overview"
 
         CurrPage.ReadinessDashboard.ShowTeamReadiness(
             RaceEvent.Name,
+            Format(RaceEvent."Race Date"),
+            DaysRemaining,
             CoveredRoles,
             TeamCoverage);
     end;

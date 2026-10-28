@@ -12,6 +12,7 @@ controladdin "F1 Race Readiness"
     HorizontalStretch = true;
 
     event DashboardReady();
+    event RefreshRequested();
 
-    procedure ShowTeamReadiness(RaceName: Text; CoveredRoles: Integer; TeamCoverage: Integer);
+    procedure ShowTeamReadiness(RaceName: Text; RaceDate: Text; DaysRemaining: Integer; CoveredRoles: Integer; TeamCoverage: Integer);
 }

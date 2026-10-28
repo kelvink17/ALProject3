@@ -8,7 +8,8 @@ page 50200 "F1 Race Events"
     ApplicationArea = All;
     UsageCategory = Lists;
     CardPageId = "F1 Race Event Card";
-    Editable = false;
+    ModifyAllowed = false;
+    DeleteAllowed = true;
     layout
     {
         area(Content)
@@ -56,6 +57,12 @@ page 50200 "F1 Race Events"
     }
     actions
     {
+        area(Promoted)
+        {
+            actionref(AssignmentsPromoted; Assignments) { }
+            actionref(AssemblyOrdersPromoted; AssemblyOrders) { }
+            actionref(PurchaseOrdersPromoted; PurchaseOrders) { }
+        }
         area(Navigation)
         {
             action(Assignments)
@@ -87,4 +94,9 @@ page 50200 "F1 Race Events"
             }
         }
     }
+
+    trigger OnDeleteRecord(): Boolean
+    begin
+        exit(Rec.ConfirmDeletion());
+    end;
 }
